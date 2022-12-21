@@ -39,10 +39,9 @@ public class Actor
         _name = speed > 0.5 ? "fast" : "slow";
     }
 
-    public Task Act(CancellationToken cancellationToken = default)
+    public async Task Act(CancellationToken cancellationToken = default)
     {
-        var task = Task.Delay(TimeSpan.FromSeconds(_speed), cancellationToken);
+        await Task.Delay(TimeSpan.FromSeconds(_speed), cancellationToken);
         _state++;
-        return task;
     }
 }
